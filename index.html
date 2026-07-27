@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belgium Campus – Student Registration</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+
+        <!-- blue header at the top -->
+        <div class="header">
+            <h1>WELCOME TO Belgium Campus</h1>
+        </div>
+
+        <!-- registration form -->
+        <div class="form-section" id="formSection">
+            <form id="studentForm" novalidate>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter first name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="surname">Surname</label>
+                    <input type="text" id="surname" name="surname" placeholder="Enter surname" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select id="gender" name="gender" required>
+                        <option value="" disabled selected>Select gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Date of Birth</label>
+                    <div class="date-row">
+                        <select id="dayOfBirth" name="dayOfBirth" required>
+                            <option value="" disabled selected>Day</option>
+                        </select>
+                        <select id="monthOfBirth" name="monthOfBirth" required>
+                            <option value="" disabled selected>Month</option>
+                            <option value="1">January</option>
+                            <option value="2">February</option>
+                            <option value="3">March</option>
+                            <option value="4">April</option>
+                            <option value="5">May</option>
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                        <select id="yearOfBirth" name="yearOfBirth" required>
+                            <option value="" disabled selected>Year</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn">Register</button>
+            </form>
+        </div>
+
+        <!-- this shows after the student registers -->
+        <div class="result-section" id="resultSection">
+            <h1>WELCOME TO Belgium Campus</h1>
+
+            <div class="detail-row">
+                <span class="detail-label">Name</span>
+                <span class="detail-value" id="dispName"></span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Surname</span>
+                <span class="detail-value" id="dispSurname"></span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Gender</span>
+                <span class="detail-value" id="dispGender"></span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Age</span>
+                <span class="detail-value" id="dispAge"></span>
+            </div>
+
+            <p class="goodbye">Good Bye thank you for registering</p>
+
+            <button type="button" class="btn btn-secondary" id="btnReset">Register Another Student</button>
+        </div>
+
+    </div>
+
+    <script>
+        // grab the form and the two sections
+        const form = document.getElementById('studentForm');
+        const formSection = document.getElementById('formSection');
+        const resultSection = document.getElementById('resultSection');
+        const daySelect = document.getElementById('dayOfBirth');
+        const yearSelect = document.getElementById('yearOfBirth');
+
+        // fill days 1–31
+        for (let d = 1; d <= 31; d++) {
+            const opt = document.createElement('option');
+            opt.value = d;
+            opt.textContent = d;
+            daySelect.appendChild(opt);
+        }
+
+        // fill years: current year down to 1900
+        const currentYear = new Date().getFullYear();
+        for (let y = currentYear; y >= 1900; y--) {
+            const opt = document.createElement('option');
+            opt.value = y;
+            opt.textContent = y;
+            yearSelect.appendChild(opt);
+        }
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault(); // stop the page from refreshing
+
+            // get whatever the user typed in
+            const name = document.getElementById('name').value.trim();
+            const surname = document.getElementById('surname').value.trim();
+            const gender = document.getElementById('gender').value;
+            const day = document.getElementById('dayOfBirth').value;
+            const month = document.getElementById('monthOfBirth').value;
+            const yearOfBirth = parseInt(document.getElementById('yearOfBirth').value, 10);
+
+            // quick check that they actually filled everything
+            if (!name || !surname || !gender || !day || !month || isNaN(yearOfBirth)) {
+                alert('Please fill in all fields correctly.');
+                return;
+            }
+
+            // work out their age
+            const age = currentYear - yearOfBirth;
+
+            // put the details on the results page
+            document.getElementById('dispName').textContent = name;
+            document.getElementById('dispSurname').textContent = surname;
+            document.getElementById('dispGender').textContent = gender;
+            document.getElementById('dispAge').textContent = age;
+
+            // hide the form and show the results
+            formSection.classList.add('hidden');
+            resultSection.classList.add('visible');
+        });
+
+        // button to go back and register someone else
+        document.getElementById('btnReset').addEventListener('click', function () {
+            form.reset();
+            formSection.classList.remove('hidden');
+            resultSection.classList.remove('visible');
+        });
+    </script>
+</body>
+</html>
