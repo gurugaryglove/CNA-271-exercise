@@ -1,0 +1,15 @@
+/workspaces/test1/bin/Debug/net9.0/MyCharpBC
+/workspaces/test1/bin/Debug/net9.0/MyCharpBC.deps.json
+/workspaces/test1/bin/Debug/net9.0/MyCharpBC.runtimeconfig.json
+/workspaces/test1/bin/Debug/net9.0/MyCharpBC.dll
+/workspaces/test1/bin/Debug/net9.0/MyCharpBC.pdb
+/workspaces/test1/obj/Debug/net9.0/MyCharpBC.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/test1/obj/Debug/net9.0/MyCharpBC.AssemblyInfoInputs.cache
+/workspaces/test1/obj/Debug/net9.0/MyCharpBC.AssemblyInfo.cs
+/workspaces/test1/obj/Debug/net9.0/MyCharpBC.csproj.CoreCompileInputs.cache
+/workspaces/test1/obj/Debug/net9.0/MyCharpBC.sourcelink.json
+/workspaces/test1/obj/Debug/net9.0/MyCharpBC.dll
+/workspaces/test1/obj/Debug/net9.0/refint/MyCharpBC.dll
+/workspaces/test1/obj/Debug/net9.0/MyCharpBC.pdb
+/workspaces/test1/obj/Debug/net9.0/MyCharpBC.genruntimeconfig.cache
+/workspaces/test1/obj/Debug/net9.0/ref/MyCharpBC.dll
